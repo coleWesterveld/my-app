@@ -105,26 +105,15 @@ function App() {
         </div>
           <div className = "Padding">
             <div className = "SearchButton">
-            <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
+              <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
+            </div>
           </div>
         </div>
-          <div className = "Padding">
-            <div className = "SearchButton">
-            <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
-          </div>
-        </div>
-          <div className = "Padding">
-            <div className = "SearchButton">
-            <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
-          </div>
-        </div>
-          <div className = "Padding">
-            <div className = "SearchButton">
-            <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
-          </div>
-        </div>
-      </div>
-      <NewsApp/>
+        <main style={{ padding: "20px" }}>
+          <NewsApp />
+        </main>
+         
+      
       
 
     </ThemeContext.Provider>

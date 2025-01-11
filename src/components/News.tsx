@@ -5,17 +5,20 @@ const NewsApp: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const API_KEY = "YOUR_NEWS_API_KEY"; // Replace with your actual key
+  const API_KEY = "6ebc9ed6b07f46a9a451e80b87f275b8"; // Replace with your actual key
   const URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
 
   useEffect(() => {
     const fetchNews = async () => {
+    console.log("Fetching news...");
+
       try {
         const response = await fetch(URL);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
+        console.log("Fetched data:", data);
         setArticles(data.articles);
       } catch (err) {
         if (err instanceof Error) {
@@ -26,6 +29,8 @@ const NewsApp: React.FC = () => {
       } finally {
         setLoading(false);
       }
+      
+
     };
 
     fetchNews();
