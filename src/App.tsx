@@ -28,7 +28,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          old text
+          new text
         </a>
       </header>
     </div>
