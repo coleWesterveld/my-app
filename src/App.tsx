@@ -24,7 +24,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Cole Edit Test
+          old text
         </a>
       </header>
     </div>
