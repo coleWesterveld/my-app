@@ -14,7 +14,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ReactSwitch from "react-switch";
-import Navbar from './Navbar'; // Import Navbar component
+import Navbar from './components/Navbar'; // Import Navbar component
+import { FaSun, FaMoon } from "react-icons/fa";
+
 
 import { createContext, useState } from "react";
 
@@ -45,15 +47,52 @@ function App() {
           }}
       >
       <Navbar theme={theme} />
-        <div className="switch-container">
-          <label className={`label-${theme}`}>
+        <div className="switch-container" style={{ border: `2px solid #${theme === 'dark' ? '666' : '777'}` }}>
+
+          {/* <label className={`label-${theme}`}>
             {theme === "light" ? "Light Mode" : "Dark Mode"}
-          </label>
+          </label> */}
           <ReactSwitch 
+              
+              onColor='#222'
+              offColor = '#999'
               checked={theme === 'dark'}        // This controls whether the switch is on or off based on the theme
               onChange={toggleTheme}
-              height={20}  // Adjust the height
-              width={50}            // This toggles the theme when the switch is clicked
+              height={30}  // Adjust the height
+              width={55}
+
+
+              
+              uncheckedIcon={
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%",
+                    fontSize: 14,
+                    color: "#fff",
+                    paddingRight: 2,
+                  }}
+                >
+                  <FaSun />
+                </div>
+              }
+              checkedIcon={
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%",
+                    fontSize: 14,
+                    //color: "#f9d71c",
+                    paddingLeft: 2,
+                  }}
+                >
+                  <FaMoon />
+                </div>
+                }
             />
         </div>
       </div>

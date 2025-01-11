@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 .App.dark{
   background-color: #000000;
   color: #000;
@@ -23,6 +30,15 @@
 
 /* Add this to your App.css or style the switch directly */
 .switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  /*border: 2px solid #444;  Border around the container */
+  border-radius: 25px; /* Optional, rounds the corners of the container */
+  padding: 0px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Optional shadow */
+  color: #fff;
   position: absolute;
   bottom: 20px; /* Adjust as needed */
   right: 20px;  /* Adjust as needed */
