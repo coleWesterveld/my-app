@@ -1,7 +1,11 @@
 // TO RUN THE PROJECT (since it uses docker)
 // commands:
-// docker build -t react-app .
-// docker run -p 3000:80 react-app
+// the following is to clear cache and stuff, good to try if getting errors
+// docker-compose down
+// docker-compose build --no-cache
+
+// this is to run
+// docker-compose up
 
 // from there, it should be accessible through browser with:
 // http://localhost:3000/
