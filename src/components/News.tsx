@@ -5,6 +5,16 @@ const NewsApp: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [selectedArticle, setSelectedArticle] = useState<number | null>(null);
+
+  // Handler to select an article
+  const handleArticleClick = (articleId: number) => {
+    setSelectedArticle(articleId);
+  };
+
+  const articleToDisplay = articles.find((article) => article.id === selectedArticle);
+
+
   const API_KEY = "6ebc9ed6b07f46a9a451e80b87f275b8"; // Replace with your actual key
   const URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
 
@@ -36,29 +46,43 @@ const NewsApp: React.FC = () => {
     fetchNews();
   }, []); // Runs once when the component mounts
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
+  if (loading) {
+    console.log("Loading");
+    return <p>Loading...</p>
+    };
+
+  if (error) {
+    console.log("error");
+    
+    return <p style={{ color: "red" }}>Error: {error}</p>
+
+    };
+
+    console.log(`Working!: ${articles}`);
 
   return (
-    <div>
-      <h2>Top Headlines</h2>
-      <ul>
-        {articles.map((article, index) => (
-          <li key={index} style={{ marginBottom: "20px" }}>
-            <h3>{article.title}</h3>
-            <p>{article.description}</p>
-            <a
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "blue" }}
-            >
-              Read more
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+
+    articleToDisplay ? (
+        <div>
+          <h2>{articleToDisplay.title}</h2>
+          <p>{articleToDisplay.content}</p>
+          <button onClick={() => setSelectedArticle(null)}>Back to articles</button>
+        </div>
+      ) : (
+        <div>
+          {articles.map((article) => (
+            <div key={article.id}>
+              <h3
+                style={{ cursor: 'pointer', color: 'blue' }}
+                onClick={() => handleArticleClick(article.id)}
+              >
+                {article.title}
+              </h3>
+            </div>
+          ))}
+        </div>
+      )
+   
   );
 };
 

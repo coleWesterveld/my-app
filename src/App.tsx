@@ -32,6 +32,13 @@ type ThemeContextType = {
 };
 
 function App() {
+  const [selectedArticle, setSelectedArticle] = useState<number | null>(null);
+
+  // Handler to select an article
+  const handleArticleClick = (articleId: number) => {
+    setSelectedArticle(articleId);
+  };
+
 
   const [theme, setTheme] = useState("dark");
 
@@ -54,6 +61,9 @@ function App() {
           }}
       >
       <Navbar theme={theme} />
+        
+          
+
         <div className="switch-container" style={{ border: `2px solid #${theme === 'dark' ? '666' : '777'}` }}>
 
           {/* <label className={`label-${theme}`}>
@@ -108,10 +118,10 @@ function App() {
               <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
             </div>
           </div>
-        </div>
-        <main style={{ padding: "20px" }}>
           <NewsApp />
-        </main>
+        </div>
+        
+
          
       
       

@@ -1,0 +1,24 @@
+.news-container {
+    flex: 1; /* Makes sure the container takes up remaining space */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-left: 250px; /* Adjust according to sidebar width */
+  }
+  
+  .articles-container {
+    max-height: 80vh; /* You can adjust this to limit the height */
+    overflow-y: auto; /* Enables scrolling */
+    padding-right: 10px; /* Optional: for a little spacing from the right */
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
