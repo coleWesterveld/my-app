@@ -14,7 +14,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ReactSwitch from "react-switch";
-import Navbar from './components/Navbar'; // Import Navbar component
+import Navbar from './components/Navbar'; 
+import SidebarMenu from "./components/Sidebar";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 
@@ -94,8 +95,11 @@ function App() {
                 </div>
                 }
             />
+            <SidebarMenu theme={theme}/>
         </div>
       </div>
+      
+
     </ThemeContext.Provider>
 
   );

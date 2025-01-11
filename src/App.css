@@ -8,13 +8,13 @@
 .App.dark{
   background-color: #000000;
   color: #000;
-  text-align: center;
+  text-align: left;
 }
 
 .App-light{
   background-color: #ffff;
   color: #fff;
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -52,6 +52,14 @@
   color: #fff; /* Dark theme text color */
 }
 
+/* Ensure the entire page is confined within the viewport and prevent scrolling */
+html, body {
+  height: 100%; /* Ensure full height */
+  margin: 0; /* Remove default margin */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+
 .label-dark{
   color: #fff;
 }
@@ -71,7 +79,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 2000;
 }
 
 .navbar-light {
@@ -84,7 +92,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 2000;
 }
 
 .App-header {
