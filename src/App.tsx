@@ -1,3 +1,11 @@
+// TO RUN THE PROJECT (since it uses docker)
+// commands:
+// docker build -t react-app .
+// docker run -p 3000:80 react-app
+
+// from there, it should be accessible through browser with:
+// http://localhost:3000/
+
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -16,7 +24,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Cole Edit Test
         </a>
       </header>
     </div>
