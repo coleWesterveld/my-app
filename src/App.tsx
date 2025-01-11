@@ -17,6 +17,9 @@ import SearchBar from './components/searchbar';
 import Navbar from './components/Navbar'; 
 import SidebarMenu from "./components/Sidebar";
 import { FaSun, FaMoon } from "react-icons/fa";
+import NewsApp from "./components/News"
+
+
 import { createContext, useState } from "react";
 // import axios from "axios";  
 
@@ -121,6 +124,9 @@ function App() {
           </div>
         </div>
       </div>
+      <NewsApp/>
+      
+
     </ThemeContext.Provider>
   )}
 export default App;

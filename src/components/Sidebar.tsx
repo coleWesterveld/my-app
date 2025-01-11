@@ -1,12 +1,12 @@
-import { Sidebar, Menu, MenuItem, SubMenu, SidebarProps } from 'react-pro-sidebar';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 //import 'react-pro-sidebar/dist/css/styles.css'; // Don't forget to import the CSS
 
 
-interface SidebarProp {
+interface SidebarProps {
     theme: string;
 }
 
-const SidebarMenu: React.FC<SidebarProp> = ({ theme }) => {
+const SidebarMenu: React.FC<SidebarProps> = ({ theme }) => {
 
     return (
         <Sidebar
