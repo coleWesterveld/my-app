@@ -11,15 +11,14 @@
 // http://localhost:3000/
 
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ReactSwitch from "react-switch";
+import SearchBar from './components/searchbar';
 import Navbar from './components/Navbar'; 
 import SidebarMenu from "./components/Sidebar";
 import { FaSun, FaMoon } from "react-icons/fa";
-
-
 import { createContext, useState } from "react";
+// import axios from "axios";  
 
 export const ThemeContext = createContext<ThemeContextType | null>(null);
 
@@ -36,6 +35,10 @@ function App() {
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : 'light'));
   }
+  const handleSearch = (query: string) => {
+    console.log("Search query:", query);
+  };
+
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
       <div className={`App-${theme}`}
@@ -97,12 +100,27 @@ function App() {
             />
             <SidebarMenu theme={theme}/>
         </div>
+          <div className = "Padding">
+            <div className = "SearchButton">
+            <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
+          </div>
+        </div>
+          <div className = "Padding">
+            <div className = "SearchButton">
+            <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
+          </div>
+        </div>
+          <div className = "Padding">
+            <div className = "SearchButton">
+            <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
+          </div>
+        </div>
+          <div className = "Padding">
+            <div className = "SearchButton">
+            <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
+          </div>
+        </div>
       </div>
-      
-
     </ThemeContext.Provider>
-
-  );
-}
-
+  )}
 export default App;
