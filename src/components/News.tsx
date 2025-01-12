@@ -15,8 +15,10 @@ const NewsApp: React.FC = () => {
   const articleToDisplay = articles.find((article) => article.id === selectedArticle);
 
 
-  const API_KEY = "6ebc9ed6b07f46a9a451e80b87f275b8"; // Replace with your actual key
+  const API_KEY = process.env.NEWS_API_KEY;
   const URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
+  console.log('API Key:', API_KEY);
+
 
   useEffect(() => {
     const fetchNews = async () => {
