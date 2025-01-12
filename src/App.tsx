@@ -13,25 +13,52 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ReactSwitch from "react-switch";
+import Navbar from './Navbar'; // Import Navbar component
+
+import { createContext, useState } from "react";
+
+export const ThemeContext = createContext<ThemeContextType | null>(null);
+
+// Define the type for the context value
+type ThemeContextType = {
+  theme: string;
+  toggleTheme: () => void;
+};
 
 function App() {
+
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : 'light'));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          new text
-        </a>
-      </header>
-    </div>
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
+      <div className={`App-${theme}`}
+          style={{
+            backgroundColor: theme === 'dark' ? '#333' : '#fff', // Apply background color
+            color: theme === 'dark' ? '#fff' : '#000', // Apply text color
+            minHeight: '100vh', // Ensure the background covers the full screen
+            display: 'flex', // Optional: to ensure the switch is in the correct position
+            flexDirection: 'column',
+          }}
+      >
+      <Navbar theme={theme} />
+        <div className="switch-container">
+          <label className={`label-${theme}`}>
+            {theme === "light" ? "Light Mode" : "Dark Mode"}
+          </label>
+          <ReactSwitch 
+              checked={theme === 'dark'}        // This controls whether the switch is on or off based on the theme
+              onChange={toggleTheme}
+              height={20}  // Adjust the height
+              width={50}            // This toggles the theme when the switch is clicked
+            />
+        </div>
+      </div>
+    </ThemeContext.Provider>
+
   );
 }
 

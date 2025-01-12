@@ -1,4 +1,12 @@
-.App {
+.App.dark{
+  background-color: #000000;
+  color: #000;
+  text-align: center;
+}
+
+.App-light{
+  background-color: #ffff;
+  color: #fff;
   text-align: center;
 }
 
@@ -13,8 +21,59 @@
   }
 }
 
+/* Add this to your App.css or style the switch directly */
+.switch-container {
+  position: absolute;
+  bottom: 20px; /* Adjust as needed */
+  right: 20px;  /* Adjust as needed */
+}
+
+.text-light {
+  color: #000; /* Light theme text color */
+}
+
+.text-dark {
+  color: #fff; /* Dark theme text color */
+}
+
+.label-dark{
+  color: #fff;
+}
+
+.label-light {
+  color: #000; /* Light theme text color */
+}
+
+/* Common styles for navbar */
+.navbar-dark {
+  background-color: #222;
+  height: 80px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-light {
+  background-color: #999;
+  height: 80px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 .App-header {
-  background-color: #282c34;
+  /*background-color: #282c34;*/
+  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,3 +95,4 @@
     transform: rotate(360deg);
   }
 }
+
