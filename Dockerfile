@@ -10,8 +10,8 @@ RUN yarn install
 # Copy the rest of the application
 COPY . .
 
-ARG NEWS_API_KEY
-ENV NEWS_API_KEY=${NEWS_API_KEY}
+ARG REACT_APP_NEWS_API_KEY
+ENV REACT_APP_NEWS_API_KEY=${REACT_APP_NEWS_API_KEY}
 
 # Expose the development server's port
 EXPOSE 3000

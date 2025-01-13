@@ -2,6 +2,8 @@ services:
   react-app:
     build:
       context: .
+      args:
+        REACT_APP_NEWS_API_KEY: "${REACT_APP_NEWS_API_KEY}"
     volumes:
       - .:/app
       - /app/node_modules
@@ -11,5 +13,6 @@ services:
       - .env
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_NEWS_API_KEY=${REACT_APP_NEWS_API_KEY}
     stdin_open: true
     tty: true
