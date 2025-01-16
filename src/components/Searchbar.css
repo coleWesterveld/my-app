@@ -1,0 +1,43 @@
+.search-bar {
+display: flex;
+align-items: center;
+position: absolute;
+top: 15%; /* hardcoded a nd loooks really bad lmao but can be changed if sidebars isnt fixed in future*/
+left: 30%;
+width: 100%;
+max-width: 400px;  
+margin: 0 auto;    
+}
+
+.search-input {
+width: 100%;
+padding: 10px 20px;  
+border-radius: 30px;
+border: 2px solid #ccc; 
+font-size: 16px;
+outline: none;
+}
+
+.search-input:focus {
+border-color: #007bff;  
+}
+
+.search-button {
+position: absolute;
+right: 10px;
+background: transparent;
+border: none;
+cursor: pointer;
+padding: 10px;
+}
+
+.search-button svg {
+color: #333;
+font-size: 18px;
+}
+
+.search-button:hover {
+background-color: #f0f0f0; 
+border-radius: 20px;
+width: 4x;
+}

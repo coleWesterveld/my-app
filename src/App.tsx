@@ -13,7 +13,7 @@
 import React from 'react';
 import './App.css';
 import ReactSwitch from "react-switch";
-import SearchBar from './components/searchbar';
+import SearchBar from './components/Searchbar';
 import Navbar from './components/Navbar'; 
 import SidebarMenu from "./components/Sidebar";
 import { FaSun, FaMoon } from "react-icons/fa";
@@ -33,6 +33,7 @@ type ThemeContextType = {
 
 function App() {
   const [selectedArticle, setSelectedArticle] = useState<number | null>(null);
+  const [query,setQuery] = useState("")
 
   // Handler to select an article
   const handleArticleClick = (articleId: number) => {
@@ -46,6 +47,7 @@ function App() {
     setTheme((curr) => (curr === "light" ? "dark" : 'light'));
   }
   const handleSearch = (query: string) => {
+    setQuery(query)
     console.log("Search query:", query);
   };
 
@@ -113,19 +115,11 @@ function App() {
             />
             <SidebarMenu theme={theme}/>
         </div>
-          <div className = "Padding">
-            <div className = "SearchButton">
-              <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
-            </div>
+          <div className = "search-bar" style = {{padding: '20px'}}>
+            <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
           </div>
-          <NewsApp />
+          {query && <NewsApp query = {query}/>}
         </div>
-        
-
-         
-      
-      
-
     </ThemeContext.Provider>
   )}
 export default App;

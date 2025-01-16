@@ -1,5 +1,4 @@
 import "./Navbar.css";
-import logo from './logo.svg';
 
 //import React, { useEffect } from "react";
 

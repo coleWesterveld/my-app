@@ -119,15 +119,3 @@ html, body {
     transform: rotate(360deg);
   }
 }
-
-
-.padding {
-  margin-top: 20px;
-}
-
-.search-bar {
-  display:flex;
-  gap:0.5rem;
-  justify-content: center;
-  height: 10vh;
-}

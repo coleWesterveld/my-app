@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-const NewsApp: React.FC = () => {
+interface NewsProps {
+  query: string;
+}
+
+const NewsApp: React.FC<NewsProps> = ({query}) => {
   const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -16,8 +20,8 @@ const NewsApp: React.FC = () => {
 
 
   const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
-  const URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
-  console.log('API Key:', API_KEY);
+  const URL = `https://newsapi.org/v2/everything?q=+${query}&apiKey=${API_KEY}`;
+  console.log('API Key:', API_KEY, "URL", URL);
 
 
   useEffect(() => {
@@ -62,14 +66,21 @@ const NewsApp: React.FC = () => {
 
     console.log(`Working!: ${articles}`);
 
-  return (
+  return (  
 
-    articleToDisplay ? (
-        <div>
-          <h2>{articleToDisplay.title}</h2>
-          <p>{articleToDisplay.content}</p>
-          <button onClick={() => setSelectedArticle(null)}>Back to articles</button>
-        </div>
+    articleToDisplay ? (  
+        <>
+          {(() => {
+            console.log("Current Articles:", articles);
+            console.log("Selected Article:", articleToDisplay);
+            return null; // Return `null` to satisfy React's expectations
+          })()}
+          <div>
+            <h2>{articleToDisplay.title}</h2>
+            <p>{articleToDisplay.content}</p>
+            <button onClick={() => setSelectedArticle(null)}>Back to articles</button>
+          </div>
+        </>
       ) : (
         <div>
           {articles.map((article) => (

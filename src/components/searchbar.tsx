@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import './Searchbar.css';
 
 type SearchBarProps = {
   placeholder?: string;
@@ -12,6 +14,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder = "Search...", onSear
     setQuery(e.target.value);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  }
+
   const handleSearch = () => {
     if (query.trim() !== "") {
       onSearch(query);
@@ -24,11 +32,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder = "Search...", onSear
         type="text"
         value={query}
         onChange={handleInputChange}
+        onKeyDown={handleKeyPress}
         placeholder={placeholder}
         className="search-input"
        />
       <button onClick={handleSearch} className="search-button">
-        Search
+        <FaSearch/>
       </button>
     </div>
   );
