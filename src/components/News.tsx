@@ -54,13 +54,17 @@ const NewsApp: React.FC<NewsProps> = ({query}) => {
 
   if (loading) {
     console.log("Loading");
-    return <p>Loading...</p>
+    return <div>
+            <p>Loading...</p>
+            </div>
     };
 
   if (error) {
     console.log("error");
     
-    return <p style={{ color: "red" }}>Error: {error}</p>
+    return <div>
+        <p style={{ color: "red" }}>Error: {error}</p>
+      </div>
 
     };
 
@@ -69,7 +73,7 @@ const NewsApp: React.FC<NewsProps> = ({query}) => {
   return (  
 
     articleToDisplay ? (  
-        <>
+        <div>
           {(() => {
             console.log("Current Articles:", articles);
             console.log("Selected Article:", articleToDisplay);
@@ -80,13 +84,17 @@ const NewsApp: React.FC<NewsProps> = ({query}) => {
             <p>{articleToDisplay.content}</p>
             <button onClick={() => setSelectedArticle(null)}>Back to articles</button>
           </div>
-        </>
+        </div>
+
       ) : (
         <div>
           {articles.map((article) => (
-            <div key={article.id}>
+            <div key={article.id} style={{
+              borderTop: "2px solid white",
+              padding: '10px'
+            }}>
               <h3
-                style={{ cursor: 'pointer', color: 'blue' }}
+                style={{ cursor: 'pointer', color: 'white' }}
                 onClick={() => handleArticleClick(article.id)}
               >
                 {article.title}
