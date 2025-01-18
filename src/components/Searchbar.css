@@ -2,8 +2,8 @@
 display: flex;
 align-items: center;
 position: absolute;
-top: 15%; /* hardcoded a nd loooks really bad lmao but can be changed if sidebars isnt fixed in future*/
-left: 30%;
+top: 60px; /* hardcoded */
+left: 30%; /* hardcoded */
 width: 100%;
 max-width: 400px;  
 margin: 0 auto;    

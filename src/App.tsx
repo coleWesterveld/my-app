@@ -13,7 +13,7 @@
 import React from 'react';
 import './App.css';
 import ReactSwitch from "react-switch";
-import SearchBar from './components/searchbar';
+import SearchBar from './components/Searchbar';
 
 import Navbar from './components/Navbar'; 
 import SidebarMenu from "./components/Sidebar";

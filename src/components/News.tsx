@@ -25,6 +25,7 @@ const NewsApp: React.FC<NewsProps> = ({query}) => {
 
   const URL = `https://newsapi.org/v2/everything?q=%22${query}%22&apiKey=${API_KEY}`;
   console.log('API Key:', API_KEY, "URL", URL);
+  console.log("In news.tsx");
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -50,7 +51,7 @@ const NewsApp: React.FC<NewsProps> = ({query}) => {
     };
 
     fetchNews();
-  }, []); // Runs once when the component mounts
+  }, [query,URL]); // Runs once when the component mounts
 
   if (loading) {
     console.log("Loading");
