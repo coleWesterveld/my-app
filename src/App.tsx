@@ -13,7 +13,8 @@
 import React from 'react';
 import './App.css';
 import ReactSwitch from "react-switch";
-import SearchBar from './components/Searchbar';
+import SearchBar from './components/searchbar';
+
 import Navbar from './components/Navbar'; 
 import SidebarMenu from "./components/Sidebar";
 import { FaSun, FaMoon } from "react-icons/fa";
@@ -115,10 +116,31 @@ function App() {
             />
             <SidebarMenu theme={theme}/>
         </div>
-          <div className = "search-bar" style = {{padding: '20px'}}>
+        <div style={{paddingLeft: "300px"}}>
+          <div className = "search-bar" style = {{
+            padding: '10px', 
+            color: theme == 'dark' ? '#666' : '#333',
+            width : '100vf',
+            zIndex: '500'
+
+          }}>
             <SearchBar onSearch={handleSearch} placeholder = "Enter search adress"/>
           </div>
-          {query && <NewsApp query = {query}/>}
+
+          <div style={{
+            //paddingTop: '100px',
+            marginTop: '100px',
+            marginBottom : '20px',
+            marginRight: '40px',
+            //padding: '20px',
+            overflowY: 'auto', // Enables scrolling for the content area
+            maxHeight: 'calc(100vh - 200px)', // Adjust to exclude navbar and search bar height
+            zIndex: '0'
+          }}>
+            {query && <NewsApp query = {query}/>}
+          </div>
+          
+        </div>
         </div>
     </ThemeContext.Provider>
   )}
