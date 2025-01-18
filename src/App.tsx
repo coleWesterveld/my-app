@@ -137,7 +137,7 @@ function App() {
             maxHeight: 'calc(100vh - 200px)', // Adjust to exclude navbar and search bar height
             zIndex: '0'
           }}>
-            {query && <NewsApp query = {query}/>}
+            {query && <NewsApp query = {query} theme = {theme}/>}
           </div>
           
         </div>

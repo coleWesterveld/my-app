@@ -1,36 +1,35 @@
 import React, { useState, useEffect } from "react";
+import RSSParser from "rss-parser";
 
 interface NewsProps {
   query: string;
+  theme: string;
 }
 
-const NewsApp: React.FC<NewsProps> = ({query}) => {
+const NewsApp: React.FC<NewsProps> = ({ query, theme }) => {
   const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  const [selectedArticle, setSelectedArticle] = useState<any | null>(null);
+  const [fullArticleContent, setFullArticleContent] = useState<string | null>(null); // For full article content
 
-  const [selectedArticle, setSelectedArticle] = useState<number | null>(null);
-
-  // Handler to select an article
   const handleArticleClick = (articleId: number) => {
     setSelectedArticle(articleId);
   };
 
-  const articleToDisplay = articles.find((article) => article.id === selectedArticle);
-
+  const handleBackToArticles = () => {
+    setSelectedArticle(null);
+    setFullArticleContent(null); // Reset full content when going back
+  };
 
   const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
+  const URL = `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`;
 
-  query = query.split(" ").join("%20")
-
-  const URL = `https://newsapi.org/v2/everything?q=%22${query}%22&apiKey=${API_KEY}`;
-  console.log('API Key:', API_KEY, "URL", URL);
-  console.log("In news.tsx");
-
+  // Fetch articles from NewsAPI
   useEffect(() => {
     const fetchNews = async () => {
-    console.log("Fetching news...");
-
+      console.log("Fetching news...");
       try {
         const response = await fetch(URL);
         if (!response.ok) {
@@ -40,11 +39,7 @@ const NewsApp: React.FC<NewsProps> = ({query}) => {
         console.log("Fetched data:", data);
         setArticles(data.articles);
       } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("An unknown error occurred.");
-        }
+        setError(err instanceof Error ? err.message : "An unknown error occurred.");
       } finally {
         setLoading(false);
       }
@@ -54,57 +49,57 @@ const NewsApp: React.FC<NewsProps> = ({query}) => {
   }, [query,URL]); // Runs once when the component mounts
 
   if (loading) {
-    console.log("Loading");
-    return <div>
-            <p>Loading...</p>
-            </div>
-    };
+    return <div>Loading...</div>;
+  }
 
   if (error) {
-    console.log("error");
-    
-    return <div>
-        <p style={{ color: "red" }}>Error: {error}</p>
-      </div>
+    return <div style={{ color: "red" }}>Error: {error}</div>;
+  }
 
-    };
-
-    console.log(`Working!: ${articles}`);
-
-  return (  
-
-    articleToDisplay ? (  
-        <div>
-          {(() => {
-            console.log("Current Articles:", articles);
-            console.log("Selected Article:", articleToDisplay);
-            return null; // Return `null` to satisfy React's expectations
-          })()}
-          <div>
-            <h2>{articleToDisplay.title}</h2>
-            <p>{articleToDisplay.content}</p>
-            <button onClick={() => setSelectedArticle(null)}>Back to articles</button>
-          </div>
+  return selectedArticle ? (
+    <div>
+      <h2 style={{ color: theme === "dark" ? "#fff" : "#000" }}>
+        {selectedArticle.title}
+      </h2>
+      <p style={{ color: theme === "dark" ? "#ddd" : "#333" }}>
+        {fullArticleContent || selectedArticle.content} {/* Display full content */}
+      </p>
+      <button
+        onClick={handleBackToArticles}
+        style={{
+          backgroundColor: theme === "dark" ? "#444" : "#eee",
+          color: theme === "dark" ? "#fff" : "#000",
+          border: "none",
+          padding: "10px 15px",
+          cursor: "pointer",
+        }}
+      >
+        Back to articles
+      </button>
+    </div>
+  ) : (
+    <div>
+      {articles.map((article, index) => (
+        <div
+          key={index}
+          style={{
+            borderTop: theme === "dark" ? "2px solid #666" : "2px solid #ccc",
+            padding: "10px",
+            backgroundColor: theme === "dark" ? "#222" : "#f9f9f9",
+          }}
+        >
+          <h3
+            style={{
+              cursor: "pointer",
+              color: theme === "dark" ? "#fff" : "#000",
+            }}
+            onClick={() => handleArticleClick(article)}
+          >
+            {article.title}
+          </h3>
         </div>
-
-      ) : (
-        <div>
-          {articles.map((article) => (
-            <div key={article.id} style={{
-              borderTop: "2px solid white",
-              padding: '10px'
-            }}>
-              <h3
-                style={{ cursor: 'pointer', color: 'white' }}
-                onClick={() => handleArticleClick(article.id)}
-              >
-                {article.title}
-              </h3>
-            </div>
-          ))}
-        </div>
-      )
-   
+      ))}
+    </div>
   );
 };
 
