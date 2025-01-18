@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import RSSParser from "rss-parser";
+
+import GeminiRemarks from "./GeminiRemarks";
+
 
 interface NewsProps {
   query: string;
@@ -64,6 +66,10 @@ const NewsApp: React.FC<NewsProps> = ({ query, theme }) => {
       <p style={{ color: theme === "dark" ? "#ddd" : "#333" }}>
         {fullArticleContent || selectedArticle.content} {/* Display full content */}
       </p>
+      <GeminiRemarks prompt = {`
+          The following article by ${selectedArticle.source.name} is called ${selectedArticle.title} and is from ${selectedArticle.url},
+          can you read the article and give a detailed bias report on the article, fact check it (point out some facts claimed in the article and mention if they are true or false, and how so), and also give some background on the source please? Thanks!
+        `}/>
       <button
         onClick={handleBackToArticles}
         style={{

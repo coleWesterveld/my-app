@@ -13,13 +13,14 @@
 import React from 'react';
 import './App.css';
 import ReactSwitch from "react-switch";
-import SearchBar from './components/Searchbar';
+import SearchBar from './components/searchbar';
 
 import Navbar from './components/Navbar'; 
 import SidebarMenu from "./components/Sidebar";
 import { FaSun, FaMoon } from "react-icons/fa";
 import NewsApp from "./components/News"
 
+import axios from 'axios';
 
 import { createContext, useState } from "react";
 // import axios from "axios";  

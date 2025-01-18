@@ -4,6 +4,7 @@ services:
       context: .
       args:
         REACT_APP_NEWS_API_KEY: "${REACT_APP_NEWS_API_KEY}"
+        REACT_APP_GEMINI: "${REACT_APP_GEMINI}"
     volumes:
       - .:/app
       - /app/node_modules
@@ -14,5 +15,6 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - REACT_APP_NEWS_API_KEY=${REACT_APP_NEWS_API_KEY}
+      - REACT_APP_GEMINI=${REACT_APP_GEMINI}
     stdin_open: true
     tty: true
