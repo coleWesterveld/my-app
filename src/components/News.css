@@ -21,4 +21,47 @@
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
+
+  .analysis-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .analysis-box {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .source-box {
+    background-color: #f8f9fa;
+  }
+  
+  .bias-box {
+    background-color: #e9ecef;
+  }
+  
+  .fact-check-box {
+    background-color: #f1f3f5;
+  }
+  
+  .fact-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .verdict {
+    font-weight: bold;
+  }
+  
+  .verdict.true {
+    color: #28a745;
+  }
+  
+  .verdict.false {
+    color: #dc3545;
+  }
+  
   

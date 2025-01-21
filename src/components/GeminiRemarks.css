@@ -1,0 +1,75 @@
+:root {
+    --container-bg: #fff;
+    --container-color: #000;
+    --source-box-bg: #e3f2fd;
+    --bias-box-bg: #fff3e0;
+    --fact-check-box-bg: #e8f5e9;
+    --fact-item-bg: rgba(255, 255, 255, 0.7);
+  }
+  
+  .container.light {
+    --container-bg: #fff;
+    --container-color: #000;
+    --source-box-bg: #e3f2fd;
+    --bias-box-bg: #fff3e0;
+    --fact-check-box-bg: #e8f5e9;
+    --fact-item-bg: rgba(255, 255, 255, 0.7);
+  }
+  
+  .container.dark {
+    --container-bg: #333;
+    --container-color: #fff;
+    --source-box-bg: #1e88e5; /* Darker shade for source */
+    --bias-box-bg: #ffb74d; /* Darker shade for bias */
+    --fact-check-box-bg: #66bb6a; /* Darker shade for fact-check */
+    --fact-item-bg: rgba(255, 255, 255, 0.1);
+  }
+  
+  .container {
+    background-color: var(--container-bg);
+    color: var(--container-color);
+  }
+  
+  .analysis-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Keeps boxes side by side */
+    padding: 20px;
+  }
+  
+  .analysis-box {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .source-box {
+    background-color: var(--source-box-bg);
+  }
+  
+  .bias-box {
+    background-color: var(--bias-box-bg);
+  }
+  
+  .fact-check-box {
+    background-color: var(--fact-check-box-bg);
+  }
+  
+  .fact-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: var(--fact-item-bg);
+  }
+  
+  .verdict.true {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .verdict.false {
+    background-color: #f44336;
+    color: white;
+  }
+  
